@@ -13,6 +13,7 @@ window.addEventListener("load", async () => {
   const templateBooks = await loadHtml("./pages/books/books.html")
   const templateBooksNoPagination = await loadHtml("./pages/books-nopagination/books.html")
   const templateHome = await loadHtml("./pages/home/home.html")
+  const templateGrid = await loadHtml("./pages/grid/grid.html")
 
   const router = new Navigo("/",{hash:true});
   window.router = router
@@ -38,7 +39,11 @@ window.addEventListener("load", async () => {
         "/books-no-pagination": (match) => {
           renderHtml(templateBooksNoPagination, "content")
           initBooksNoPagination()
-        }
+        },
+        "/grid": (match) => {
+          renderHtml(templateGrid, "content")
+        },
+
       })
       .notFound(() => document.getElementById("content").innerHTML ="<h2>404 - Page not found</h2>")
       .resolve()
